@@ -94,6 +94,12 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                <div>
+                    <p>Họ tên : Nguyễn Văn Hòa</p>
+                    <p>Năm sinh : 18-04-2000</p>
+                    <p>Trường học : ĐH PTIT</p>
+                    <p>Mục tiêu : Hiểu tốt kiến thức trong khóa học Laravel 18 này</p>
+                </div>
             </div>
         </div>
     </body>
