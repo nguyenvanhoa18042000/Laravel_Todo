@@ -46,51 +46,45 @@ Route::prefix('task')->group(function(){
 	})->name('todo.task.reset');
 });
 
+Route::get('list' , function(){
+	 $list = [
+        [
+            'name' => 'Học View trong Laravel',
+            'status' => 0
+        ],
+        [
+            'name' => 'Học Route trong Laravel',
+            'status' => 1
+        ],
+        [
+            'name' => 'Làm bài tập View trong Laravel',
+            'status' => -1
+        ],
+    ];
+	return view('list',[
+		'list' => $list
+	]);
+});
 
-// Route::get('/user', function () {
-//     $a = 10 * 10;
-//     dd($a);
-// });
+Route::get('profile' , function(){
+	$name = 'Nguyễn Văn Hòa';
+	$birthday = '2000';
+	$school = 'PTIT';
+	$address = 'Hà Đông -HN';
+	$introduce = '<h1>Tên mình là Nguyễn Văn Hòa</h1>
+	<h2>Yêu màu hồng</h2>
+	<h3>Vui vẻ , hòa đồng</h3>
+	<h4>Hay chơi thể thao</h4>
+	<h5>Thích nghe nhạc , đi du lịch ....</h5>';
+	$goal = 'Lương triệu đô';
 
-// Route::delete('/task/delete', function () {
-//     dd('delete');
-// });
+	return view('profile',[
+		'name' => $name,
+		'birthday' => $birthday,
+		'school' => $school,
+		'address' => $address,
+		'introduce' => $introduce,
+		'goal' => $goal
+	]);
+});
 
-// Route::delete('/task/delete/{id}', function ($id) {
-// 	dd($id);
-//     return redirect('/thanhcong');
-// });
-
-// Route::get('/thanhcong', function () {
-//     dd('xóa thành công');
-// });
-
-// Route::get('user/{id}', function($id) {
-//     return 'User ' . $id;
-// });
-
-// Route::get('user/{id?}', function($id = null) {
-//     if ($id == null) {
-//         return 'List users';
-//     }
-    
-//     return "User $id";
-// });
-
-// Route::get('/user/{id}/post/{post}', function($id, $idPost) {
-//     return "This is post $idPost of user $id"; 
-// });
-
-// Route::get('/user/{id}/post/{post}/{name}', function($id, $idPost,$name) {
-//     return "This is post $idPost of user $id $name"; 
-// });
-
-// Route::delete('/task/delete/{id}', function ($id) {
-//      // return redirect('home');
-// })->name('todo.task.delete');
-
-// Route::prefix('task')->group(function () {
-//     Route::get('delete', function () {
-//     dd('delete');
-// 	})->name('todo.task.delete');
-// });

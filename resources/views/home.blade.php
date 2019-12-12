@@ -1,49 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel Todo - Basic</title>
+@extends('layouts.master')
 
-    <!-- Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+@section('title')
+Laravel Todo - Basic
+@endsection
 
-    <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+@section('css')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Lato';
+    }
+    .fa-btn {
+        margin-right: 1px;
+    }
+    .task-table tbody tr td:nth-child(2){
+        width: 120px;
+    }
+    .task-table tbody tr td:nth-child(3){
+        width: 100px;
+    }
+</style>
+@endsection
 
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-        .fa-btn {
-            margin-right: 1px;
-        }
-        .task-table tbody tr td:nth-child(2){
-            width: 120px;
-        }
-        .task-table tbody tr td:nth-child(3){
-            width: 100px;
-        }
-    </style>
-</head>
-<body id="app-layout">
-<nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
+@section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+@endsection
 
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                Danh sách công việc
-            </a>
-        </div>
+@section('header')
+@include('layouts.header')
+@endsection
 
-    </div>
-</nav>
+@section('footer')
+@include('layouts.footer')
+@endsection
 
+@section('content')
 <div class="container">
     <div class="col-sm-offset-2 col-sm-8">
         <div class="panel panel-default">
@@ -158,10 +153,7 @@
         </div>
     </div>
 </div>
+@endsection
 
-<!-- JavaScripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-{{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
-</body>
-</html>
+
+
