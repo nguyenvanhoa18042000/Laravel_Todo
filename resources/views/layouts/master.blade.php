@@ -15,7 +15,6 @@
 	<div>
 	    @yield('content')
 	</div>
-	<div>
 		@yield('footer')
 	</div>
 	@yield('script')

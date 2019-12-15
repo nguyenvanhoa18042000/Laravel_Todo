@@ -16,6 +16,33 @@ Profile
   </style>
 @endsection
 
+<!-- <div>
+                <a href="{{ route('task.index') }}" type="submit" class="btn btn-success">
+                    <i class="fa fa-btn fa-check"></i>index
+                </a>
+                <a href="{{ route('task.create') }}" type="submit" class="btn btn-success">
+                    <i class="fa fa-btn fa-check"></i>create
+                </a>
+                <a href="{{ route('task.store') }}" type="submit" class="btn btn-success">
+                    <i class="fa fa-btn fa-check"></i>store
+                </a>
+                <a href="{{ route('task.show' , 1) }}" type="submit" class="btn btn-success">
+                    <i class="fa fa-btn fa-check"></i>show
+                </a>
+                <a href="{{ route('task.edit' , 1) }}" type="submit" class="btn btn-success">
+                    <i class="fa fa-btn fa-check"></i>edit
+                </a>
+                <a href="{{ route('task.update' , 1) }}" type="submit" class="btn btn-success">
+                    <i class="fa fa-btn fa-check"></i>update
+                </a>
+                <a href="{{ route('task.delete' , 1) }}" type="submit" class="btn btn-success">
+                    <i class="fa fa-btn fa-check"></i>delete
+                </a>
+            
+            </div> -->
+
+
+
 @section('content')
 <table class="table table-bordered" id="my-table">
   <tbody>
