@@ -13,9 +13,7 @@ Route::get('home', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'Frontend\TaskController@index')->name('home');
 
 // Route::get('/', 'HomeController@index');
 // Route::get('page/{page?}', 'HomeController@index');

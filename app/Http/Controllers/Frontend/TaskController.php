@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
-
+use App\Task; 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +14,11 @@ class TaskController extends Controller
      */
     public function index()
     {
-        dd('hàm index');
+        $tasks = Task::all();
+        $tasks = Task::orderBy('name', 'desc')->get();
+        return view('home')->with([
+            'tasks' => $tasks
+        ]);
     }
 
     /**
@@ -35,9 +39,15 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //dd('hàm store');
-        $input = $request->only(['name','deadline']);
-        dd($input);
+        $data = Task::all();
+        $task = new Task();
+        $task->name = $data[0]['name'];
+        $task->content = $data[0]['content'];
+        $task->deadline = $data[0]['deadline'];
+        $task->status = 1;
+        $task->updated_at = null;
+        $task->save(); 
+        return redirect()->route('task.index'); 
     }
 
     /**
@@ -48,7 +58,20 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        dd('hàm show với id = '.$id);
+
+        //dd('store');
+        // $task = new Task();
+        // $task->name = 'Học Laravel 2';
+        // $task->status = 1;
+        // $task->deadline = '2019-12-17 23:00:00';
+        // $task->save();
+
+        // Task::where('status', 0)
+        //     ->update(['deadline' => '2019-12-30 23:00:00']);
+        //$task = Task::find($id);
+        //$task = Task::where('id', $id)->first();
+        //$task = Task::findOrFail($id);//nếu vd ta muốn sai thì quay về trang chủ thì mh xử lí if else logic
+        //dd($task);
     }
 
     /**
@@ -71,7 +94,13 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd('hàm update với id = '.$id);
+        $url = $request->fulexUrl();
+        dd($url);
+        $task = Task::find($id);
+        $task->name = 'Học Laravel 3';
+        $task->status = 1;
+        $task->save();
+        //dd('hàm update với id = '.$id);
     }
 
     /**
@@ -82,7 +111,9 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        dd('hàm xóa với id = '.$id);
+        $task = Task::find($id);
+        $task->delete();
+        return redirect()->route('task.index');
     }
 
     public function complete($id){
