@@ -39,11 +39,13 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $data = Task::all();
+        $name = $request->get('name');
+        $content = $request->get('content');
+        $deadline = $request->get('deadline');
         $task = new Task();
-        $task->name = $data[0]['name'];
-        $task->content = $data[0]['content'];
-        $task->deadline = $data[0]['deadline'];
+        $task->name = $name;
+        $task->content = $content;
+        $task->deadline = $deadline;
         $task->status = 1;
         $task->updated_at = null;
         $task->save(); 
