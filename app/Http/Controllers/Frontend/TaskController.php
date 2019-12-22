@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Task; 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+ // use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -28,7 +29,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        dd('hàm create');
+        return view('font-end.tasks.create');
     }
 
     /**
@@ -42,11 +43,14 @@ class TaskController extends Controller
         $name = $request->get('name');
         $content = $request->get('content');
         $deadline = $request->get('deadline');
+        $status = $request->get('status');
+        $priority = $request->get('priority');
         $task = new Task();
         $task->name = $name;
         $task->content = $content;
         $task->deadline = $deadline;
-        $task->status = 1;
+        $task->status = $status;
+        $task->priority = $priority;
         $task->updated_at = null;
         $task->save(); 
         return redirect()->route('task.index'); 
@@ -60,7 +64,10 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-
+        $task = Task::find($id);
+        return view('font-end.tasks.show')->with([
+            'task' => $task
+        ]);
         //dd('store');
         // $task = new Task();
         // $task->name = 'Học Laravel 2';
@@ -84,7 +91,12 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-         dd('hàm edit với id = '.$id);
+        $tasks = Task::all();
+         $task = Task::find($id);
+         return view('font-end.tasks.edit')->with([
+            'tasks' => $tasks,
+            'task' => $task
+        ]);
     }
 
     /**
@@ -96,13 +108,19 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $url = $request->fulexUrl();
-        dd($url);
+        $name = $request->get('name');
+        $deadline = $request->get('deadline');
+        $content = $request->get('content');
+        $status = $request->get('status');
+        $priority = $request->get('priority');
         $task = Task::find($id);
-        $task->name = 'Học Laravel 3';
-        $task->status = 1;
+        $task->name = $name;
+        $task->content = $content;
+        $task->deadline = $deadline;
+        $task->status = $status;
+        $task->priority = $priority;
         $task->save();
-        //dd('hàm update với id = '.$id);
+        return redirect()->route('task.index');
     }
 
     /**
@@ -119,10 +137,16 @@ class TaskController extends Controller
     }
 
     public function complete($id){
-        dd('hàm complete với id = '.$id);
+        $task = Task::find($id);
+        $task->status = 2;
+        $task->save();
+        return redirect()->route('task.index');
     }
 
     public function reComplete($id){
-        dd('hàm làm lại với id = '.$id);
+        $task = Task::find($id);
+        $task->status = 1;
+        $task->save();
+        return redirect()->route('task.index');
     }
 }
