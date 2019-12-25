@@ -15,6 +15,9 @@ class TaskController extends Controller
      */
     public function index()
     {
+        $tasks = Task::alltask();
+        print_r($tasks);
+        die();
         $tasks = Task::all();
         $tasks = Task::orderBy('name', 'desc')->get();
         return view('home')->with([

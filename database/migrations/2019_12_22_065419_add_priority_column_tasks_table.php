@@ -17,7 +17,6 @@ class AddPriorityColumnTasksTable extends Migration
             $table->integer('priority')->after('status');
         });
     }
-
     /**
      * Reverse the migrations.
      *
